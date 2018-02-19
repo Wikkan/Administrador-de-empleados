@@ -33,6 +33,9 @@ public class Login extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1024, 736));
 
         rbAdministrador.setText("administrador");
 
@@ -56,12 +59,12 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(btnIngresar))
                     .addComponent(tfUsuario)
                     .addComponent(pfContraseña))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -69,16 +72,13 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbAdministrador)
                     .addComponent(btnIngresar))
-                .addGap(87, 87, 87))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        /*System.out.println("Usuario: " + tfUsuario.getText());
-        System.out.println("Contraseña: " + pfContraseña.getText());
-        System.out.println("Seleccionado: " + rbAdministrador.isSelected());*/
         
         if(!tfUsuario.getText().equals("") && !pfContraseña.getText().equals("")) {
             if(!rbAdministrador.isSelected()) {
@@ -91,15 +91,6 @@ public class Login extends javax.swing.JFrame {
             setVisible(false);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
-
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
