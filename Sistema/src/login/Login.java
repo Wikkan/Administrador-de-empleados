@@ -118,6 +118,9 @@ public class Login extends javax.swing.JFrame {
                 regular = new Regular(listener);
                 regular.setVisible(true);
                 setVisible(false);
+				
+				//administrador = new Administrador(listener);
+				//administrador.setVisible(true);
             }else
             {
                 System.out.append("Usuario o contraseña incorrecta");
