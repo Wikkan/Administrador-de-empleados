@@ -37,8 +37,8 @@ public class Regular extends javax.swing.JFrame {
         lblSueldo = new javax.swing.JLabel();
         pVacaciones = new javax.swing.JPanel();
         btnSolicitud = new javax.swing.JButton();
-        cInicio = new com.toedter.calendar.JCalendar();
         jLabel1 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         pHistorial = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lHistorial = new javax.swing.JList();
@@ -53,7 +53,6 @@ public class Regular extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(1024, 736));
 
         btnEditar.setText("Editar Información");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,22 +157,22 @@ public class Regular extends javax.swing.JFrame {
             .addGroup(pVacacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pVacacionesLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
                         .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 754, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(764, Short.MAX_VALUE))
         );
         pVacacionesLayout.setVerticalGroup(
             pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pVacacionesLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(165, 165, 165)
                 .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -356,7 +355,7 @@ public class Regular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudActionPerformed
-        Date inicio = cInicio.getDate();
+        //Date inicio = cInicio.getDate();
 
         //Verifica que el inicio sea menor que la llegada
         //System.out.println(llegada.after(inicio));
@@ -374,7 +373,7 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JButton btnHistorial;
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnVacaciones;
-    private com.toedter.calendar.JCalendar cInicio;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
