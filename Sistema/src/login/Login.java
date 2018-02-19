@@ -86,6 +86,7 @@ public class Login extends javax.swing.JFrame {
         }else
         {
             Boolean found = false;
+            Boolean admin = false;
             Usuario u = new Usuario();
             u.setUsuario(tfUsuario.getText());
             u.setContraseña(pfContraseña.getText());
@@ -103,7 +104,7 @@ public class Login extends javax.swing.JFrame {
                 
                 if (rs.next())
                 {
-                    System.out.println(rs.getInt("Persona_cedula") + ", " + rs.getString("nombreUsuario"));
+                    if (rs.getInt("administrador") == 1) admin = true;
                     found = true;
                 }
                 con.close();
@@ -115,12 +116,18 @@ public class Login extends javax.swing.JFrame {
             }
             if (found)
             {
-                regular = new Regular(listener);
-                regular.setVisible(true);
+                if (admin)
+                {
+                    administrador = new Administrador(listener);
+                    administrador.setVisible(true);
+                }else
+                {
+                    regular = new Regular(listener);
+                    regular.setVisible(true);
+                }
                 setVisible(false);
-				
-				//administrador = new Administrador(listener);
-				//administrador.setVisible(true);
+                
+				//
             }else
             {
                 System.out.append("Usuario o contraseña incorrecta");
