@@ -85,37 +85,44 @@ public class Login extends javax.swing.JFrame {
             System.out.println("Ingrese un usuario y contraseña");
         }else
         {
+            Boolean found = false;
             Usuario u = new Usuario();
             u.setUsuario(tfUsuario.getText());
             u.setContraseña(pfContraseña.getText());
             
-            
-            
-            Conexion db = new Conexion();
             try {
+                Conexion db = new Conexion();
                 // Crear conexion
                 Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
                 // Crear declaracion
-                PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE nombreUsuario=? AND contraseña=?");
+                PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE nombreUsuario=? AND contraseña=MD5(?)");
                 stmt.setString(1, u.getUsuario());
                 stmt.setString(2, u.getContraseña());
                 // Ejecutar SQL
                 ResultSet rs = stmt.executeQuery();
-                // Process result
-                System.out.println("success");
-                while (rs.next())
+                
+                if (rs.next())
                 {
-                    System.out.println(rs.getInt("Persona_cedula") + ", " + rs.getString("usuario"));
-                    regular = new Regular(listener);
-                    regular.setVisible(true);
-                    setVisible(false);
+                    System.out.println(rs.getInt("Persona_cedula") + ", " + rs.getString("nombreUsuario"));
+                    found = true;
                 }
                 con.close();
+                    
             }
             catch (Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 System.out.println("No se logro conectar con el servidor, contacte al administrador");
             }
+            if (found)
+            {
+                regular = new Regular(listener);
+                regular.setVisible(true);
+                setVisible(false);
+            }else
+            {
+                System.out.append("Usuario o contraseña incorrecta");
+            }
+            
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
