@@ -47,8 +47,8 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         lstVacaciones = new javax.swing.JList();
         pVacaciones = new javax.swing.JPanel();
-        cCalendario = new com.toedter.calendar.JCalendar();
         btnSolicitud = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         pHistorial = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lHistorial = new javax.swing.JList();
@@ -63,7 +63,6 @@ public class Administrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(1024, 736));
 
         btnEditar.setText("Editar Información");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,9 +217,9 @@ public class Administrador extends javax.swing.JFrame {
         pVacacionesLayout.setHorizontalGroup(
             pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pVacacionesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSolicitud)
                 .addContainerGap(675, Short.MAX_VALUE))
         );
@@ -229,8 +228,8 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(pVacacionesLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSolicitud)
-                    .addComponent(cCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSolicitud))
                 .addContainerGap(387, Short.MAX_VALUE))
         );
 
@@ -422,7 +421,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVacaciones;
-    private com.toedter.calendar.JCalendar cCalendario;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
