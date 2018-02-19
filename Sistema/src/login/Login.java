@@ -1,9 +1,13 @@
 package login;
 
+import conexion.Conexion;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import regular.Regular;
 import admin.Administrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class Login extends javax.swing.JFrame {
 
@@ -76,15 +80,60 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        if (rbAdministrador.isSelected())
+        if (pContrasena.getText().isEmpty() || tfUsuario.getText().isEmpty())
         {
-            administrador = new Administrador(listener);
-            administrador.setVisible(true);
-        }else {
-            regular = new Regular(listener);
-            regular.setVisible(true);
+            System.out.println("Ingrese un usuario y contraseña");
+        }else
+        {
+            Boolean found = false;
+            Boolean admin = false;
+            Usuario u = new Usuario();
+            u.setUsuario(tfUsuario.getText());
+            u.setContraseña(pContrasena.getText());
+            
+            try {
+                Conexion db = new Conexion();
+                // Crear conexion
+                Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+                // Crear declaracion
+                PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE nombreUsuario=? AND contraseña=MD5(?)");
+                stmt.setString(1, u.getUsuario());
+                stmt.setString(2, u.getContraseña());
+                // Ejecutar SQL
+                ResultSet rs = stmt.executeQuery();
+                
+                if (rs.next())
+                {
+                    if (rs.getInt("administrador") == 1) admin = true;
+                    found = true;
+                }
+                con.close();
+                    
+            }
+            catch (Exception e){
+                //e.printStackTrace();
+                System.out.println("No se logro conectar con el servidor, contacte al administrador");
+            }
+            if (found)
+            {
+                if (admin)
+                {
+                    administrador = new Administrador(listener);
+                    administrador.setVisible(true);
+                }else
+                {
+                    regular = new Regular(listener);
+                    regular.setVisible(true);
+                }
+                setVisible(false);
+                
+				//
+            }else
+            {
+                System.out.append("Usuario o contraseña incorrecta");
+            }
+            
         }
-        setVisible(false);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
