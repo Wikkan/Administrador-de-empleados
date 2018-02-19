@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
+        <file>
+            <url>src/login/Login.java</url>
+            <line>106</line>
+        </file>
+    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Josué/Documents/GitHub/Administrador-de-empleados/Sistema/src/login/Login.java</file>
+            <file>file:/C:/Users/Josué/Documents/GitHub/Administrador-de-empleados/Sistema/src/regular/Regular.java</file>
+            <file>file:/C:/Users/Josué/Documents/GitHub/Administrador-de-empleados/Sistema/src/admin/Administrador.java</file>
+        </group>
+    </open-files>
+</project-private>
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -9,3 +28,4 @@
         </group>
     </open-files>
 </project-private>
+>>>>>>> dd303a5e94521e4281b43bce57997131058da6d7
