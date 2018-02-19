@@ -1,8 +1,12 @@
 package login;
 
+import conexion.Conexion;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import regular.Regular;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class Login extends javax.swing.JFrame {
     
@@ -74,14 +78,42 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        /*System.out.println("Usuario: " + tfUsuario.getText());
-        System.out.println("Contraseña: " + pfContraseña.getText());
-        System.out.println("Seleccionado: " + rbAdministrador.isSelected());*/
-        
-        if(!tfUsuario.getText().equals("") && !pfContraseña.getText().equals("")) {
-            regular = new Regular(listener);
-            regular.setVisible(true);
-            setVisible(false);
+        if (pfContraseña.getText().isEmpty() || tfUsuario.getText().isEmpty())
+        {
+            System.out.println("Ingrese un usuario y contraseña");
+        }else
+        {
+            Usuario u = new Usuario();
+            u.setUsuario(tfUsuario.getText());
+            u.setContraseña(pfContraseña.getText());
+            
+            
+            
+            Conexion db = new Conexion();
+            try {
+                // Crear conexion
+                Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+                // Crear declaracion
+                PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE nombreUsuario=? AND contraseña=?");
+                stmt.setString(1, u.getUsuario());
+                stmt.setString(2, u.getContraseña());
+                // Ejecutar SQL
+                ResultSet rs = stmt.executeQuery();
+                // Process result
+                System.out.println("success");
+                while (rs.next())
+                {
+                    System.out.println(rs.getInt("Persona_cedula") + ", " + rs.getString("usuario"));
+                    regular = new Regular(listener);
+                    regular.setVisible(true);
+                    setVisible(false);
+                }
+                con.close();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                System.out.println("No se logro conectar con el servidor, contacte al administrador");
+            }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
