@@ -4,6 +4,7 @@ import conexion.Conexion;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import regular.Regular;
+import admin.Administrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -12,6 +13,7 @@ public class Login extends javax.swing.JFrame {
     
     private ActionListener listener = new listener();
     private Regular regular;
+    private Administrador administrador;
     
     private class listener implements ActionListener {
         @Override
