@@ -1,6 +1,7 @@
 package login;
 
 import regular.Regular;
+import admin.Administrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ public class Login extends javax.swing.JFrame {
     
     private ActionListener listener = new listener();
     private Regular regular;
+    private Administrador administrador;
     
     private class listener implements ActionListener {
         @Override
@@ -79,8 +81,13 @@ public class Login extends javax.swing.JFrame {
         System.out.println("Seleccionado: " + rbAdministrador.isSelected());*/
         
         if(!tfUsuario.getText().equals("") && !pfContraseña.getText().equals("")) {
-            regular = new Regular(listener);
-            regular.setVisible(true);
+            if(!rbAdministrador.isSelected()) {
+                regular = new Regular(listener);
+                regular.setVisible(true);
+            } else {
+                administrador = new Administrador(listener);
+                administrador.setVisible(true);
+            }
             setVisible(false);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
