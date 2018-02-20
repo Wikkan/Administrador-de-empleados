@@ -48,7 +48,7 @@ public class Administrador extends javax.swing.JFrame {
         lstVacaciones = new javax.swing.JList();
         pVacaciones = new javax.swing.JPanel();
         btnSolicitud = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCalendar2 = new com.toedter.calendar.JCalendar();
         pHistorial = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lHistorial = new javax.swing.JList();
@@ -217,9 +217,9 @@ public class Administrador extends javax.swing.JFrame {
         pVacacionesLayout.setHorizontalGroup(
             pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pVacacionesLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSolicitud)
                 .addContainerGap(675, Short.MAX_VALUE))
         );
@@ -228,7 +228,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(pVacacionesLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSolicitud))
                 .addContainerGap(387, Short.MAX_VALUE))
         );
@@ -421,7 +421,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVacaciones;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

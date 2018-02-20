@@ -392,9 +392,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jCalendar2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnSolicitud" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="675" max="32767" attributes="0"/>
               </Group>
@@ -405,7 +405,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jCalendar1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCalendar2" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSolicitud" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="387" max="32767" attributes="0"/>
@@ -419,7 +419,7 @@
             <Property name="text" type="java.lang.String" value="Solicitar Vacaciones"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+        <Component class="com.toedter.calendar.JCalendar" name="jCalendar2">
         </Component>
       </SubComponents>
     </Container>
