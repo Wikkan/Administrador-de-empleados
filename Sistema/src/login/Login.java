@@ -33,12 +33,9 @@ public class Login extends javax.swing.JFrame {
 
         tfUsuario = new javax.swing.JTextField();
         pContrasena = new javax.swing.JPasswordField();
-        rbAdministrador = new javax.swing.JRadioButton();
         btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        rbAdministrador.setText("Administrador");
 
         btnIngresar.setText("Ingresar");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,11 +51,8 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbAdministrador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                        .addComponent(btnIngresar))
-                    .addComponent(tfUsuario)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                     .addComponent(pContrasena))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
@@ -70,9 +64,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbAdministrador)
-                    .addComponent(btnIngresar))
+                .addComponent(btnIngresar)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
@@ -118,6 +110,9 @@ public class Login extends javax.swing.JFrame {
             {
                 if (admin)
                 {
+                    //regular = new Regular(listener);
+                    //regular.setVisible(true);
+                    
                     administrador = new Administrador(listener);
                     administrador.setVisible(true);
                 }else
@@ -139,7 +134,6 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JPasswordField pContrasena;
-    private javax.swing.JRadioButton rbAdministrador;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

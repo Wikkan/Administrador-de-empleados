@@ -34,10 +34,8 @@
                       <Component id="tfBuscar" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="426" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="572" max="32767" attributes="0"/>
                       <Component id="btnEditar" min="-2" pref="128" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnHistorial" min="-2" pref="128" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnVacaciones" min="-2" pref="128" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -50,18 +48,11 @@
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pHistorial" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="pVacaciones" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
-          <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pBuscar" max="32767" attributes="0"/>
@@ -77,7 +68,6 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnEditar" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="btnHistorial" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="btnVacaciones" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnCerrar" max="32767" attributes="0"/>
@@ -94,18 +84,11 @@
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="189" max="32767" attributes="0"/>
-                  <Component id="pHistorial" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="189" max="32767" attributes="0"/>
                   <Component id="pVacaciones" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
-          <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="192" max="32767" attributes="0"/>
                   <Component id="pBuscar" min="-2" max="-2" attributes="0"/>
@@ -122,14 +105,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnHistorial">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ver Historial"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistorialActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVacaciones">
@@ -167,31 +142,29 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblNombre" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel4" pref="120" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel5" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel4" pref="120" max="32767" attributes="0"/>
+                              <Component id="jLabel3" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbDireccion" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lblSueldo" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="lbDireccion" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="lblPuesto" pref="846" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnFamiliar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -213,12 +186,9 @@
                       <Component id="lbDireccion" min="-2" pref="115" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="lblSueldo" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="btnFamiliar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -240,12 +210,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbDireccion">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JButton" name="btnFamiliar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sueldo"/>
+            <Property name="text" type="java.lang.String" value="Agregar Familiar"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblSueldo">
         </Component>
       </SubComponents>
     </Container>
@@ -300,47 +268,6 @@
         </Component>
         <Component class="com.toedter.calendar.JCalendar" name="jCalendar2">
         </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pHistorial">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="984" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="343" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="182" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lHistorial">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pEditar">

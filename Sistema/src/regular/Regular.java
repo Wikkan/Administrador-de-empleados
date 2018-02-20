@@ -13,7 +13,6 @@ public class Regular extends javax.swing.JFrame {
         
         pBuscar.setVisible(false);
         pVacaciones.setVisible(false);
-        pHistorial.setVisible(false);
         pEditar.setVisible(false);
     }
 
@@ -22,7 +21,6 @@ public class Regular extends javax.swing.JFrame {
     private void initComponents() {
 
         btnEditar = new javax.swing.JButton();
-        btnHistorial = new javax.swing.JButton();
         btnVacaciones = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -33,15 +31,11 @@ public class Regular extends javax.swing.JFrame {
         lblPuesto = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lbDireccion = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        lblSueldo = new javax.swing.JLabel();
+        btnFamiliar = new javax.swing.JButton();
         pVacaciones = new javax.swing.JPanel();
         btnSolicitud = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jCalendar2 = new com.toedter.calendar.JCalendar();
-        pHistorial = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lHistorial = new javax.swing.JList();
         pEditar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taDireccion = new javax.swing.JTextArea();
@@ -58,13 +52,6 @@ public class Regular extends javax.swing.JFrame {
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
-            }
-        });
-
-        btnHistorial.setText("Ver Historial");
-        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHistorialActionPerformed(evt);
             }
         });
 
@@ -94,7 +81,7 @@ public class Regular extends javax.swing.JFrame {
 
         jLabel4.setText("Dirección");
 
-        jLabel5.setText("Sueldo");
+        btnFamiliar.setText("Agregar Familiar");
 
         javax.swing.GroupLayout pBuscarLayout = new javax.swing.GroupLayout(pBuscar);
         pBuscar.setLayout(pBuscarLayout);
@@ -105,20 +92,19 @@ public class Regular extends javax.swing.JFrame {
                 .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pBuscarLayout.createSequentialGroup()
-                        .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pBuscarLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblSueldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(lbDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pBuscarLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(lblPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)))))
+                                .addComponent(lblPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE))))
+                    .addGroup(pBuscarLayout.createSequentialGroup()
+                        .addComponent(btnFamiliar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pBuscarLayout.setVerticalGroup(
@@ -134,11 +120,9 @@ public class Regular extends javax.swing.JFrame {
                 .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(103, 103, 103))
+                .addGap(82, 82, 82)
+                .addComponent(btnFamiliar)
+                .addGap(74, 74, 74))
         );
 
         btnSolicitud.setText("Solicitar Vacaciones");
@@ -174,25 +158,6 @@ public class Regular extends javax.swing.JFrame {
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174)
                 .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jScrollPane1.setViewportView(lHistorial);
-
-        javax.swing.GroupLayout pHistorialLayout = new javax.swing.GroupLayout(pHistorial);
-        pHistorial.setLayout(pHistorialLayout);
-        pHistorialLayout.setHorizontalGroup(
-            pHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pHistorialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pHistorialLayout.setVerticalGroup(
-            pHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pHistorialLayout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -256,21 +221,14 @@ public class Regular extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(tfBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 426, Short.MAX_VALUE)
+                        .addGap(0, 572, Short.MAX_VALUE)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(pHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -289,7 +247,6 @@ public class Regular extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -299,11 +256,6 @@ public class Regular extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(189, Short.MAX_VALUE)
-                    .addComponent(pHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(189, Short.MAX_VALUE)
@@ -325,28 +277,20 @@ public class Regular extends javax.swing.JFrame {
         pEditar.setVisible(true);
         pBuscar.setVisible(false);
         pVacaciones.setVisible(false);
-        pHistorial.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
-        pHistorial.setVisible(true);
-        pEditar.setVisible(false);
-        pBuscar.setVisible(false);
-        pVacaciones.setVisible(false);
-    }//GEN-LAST:event_btnHistorialActionPerformed
 
     private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
         pVacaciones.setVisible(true);
         pEditar.setVisible(false);
         pBuscar.setVisible(false);
-        pHistorial.setVisible(false);
     }//GEN-LAST:event_btnVacacionesActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        pBuscar.setVisible(true);
-        pEditar.setVisible(false);
-        pVacaciones.setVisible(false);
-        pHistorial.setVisible(false);
+        if(!tfBuscar.getText().equals("")){
+            pBuscar.setVisible(true);
+            pEditar.setVisible(false);
+            pVacaciones.setVisible(false);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -370,27 +314,22 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnHistorial;
+    private javax.swing.JButton btnFamiliar;
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnVacaciones;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList lHistorial;
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPuesto;
-    private javax.swing.JLabel lblSueldo;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JPanel pBuscar;
     private javax.swing.JPanel pEditar;
-    private javax.swing.JPanel pHistorial;
     private javax.swing.JPanel pVacaciones;
     private javax.swing.JTextArea taDireccion;
     private javax.swing.JTextField tfBuscar;
