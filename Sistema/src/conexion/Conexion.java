@@ -23,7 +23,7 @@ public class Conexion {
 
         String driver = props.getProperty("jdbc.driver");
         if (driver != null) {
-            Class.forName(driver) ;
+            Class.forName(driver);
         }
 
         this.url = props.getProperty("jdbc.url");
