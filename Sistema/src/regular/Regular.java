@@ -6,6 +6,7 @@ import java.util.Date;
 public class Regular extends javax.swing.JFrame {
     
     private ActionListener listener;
+    private Date actual = new Date();
     
     public Regular(ActionListener listener) {
         initComponents();
@@ -33,9 +34,9 @@ public class Regular extends javax.swing.JFrame {
         lbDireccion = new javax.swing.JLabel();
         btnFamiliar = new javax.swing.JButton();
         pVacaciones = new javax.swing.JPanel();
-        btnSolicitud = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jCalendar2 = new com.toedter.calendar.JCalendar();
+        cCalendario = new com.toedter.calendar.JCalendar();
+        btnSolicitud = new javax.swing.JButton();
         pEditar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taDireccion = new javax.swing.JTextArea();
@@ -125,14 +126,14 @@ public class Regular extends javax.swing.JFrame {
                 .addGap(74, 74, 74))
         );
 
+        jLabel1.setText("Inicio");
+
         btnSolicitud.setText("Solicitar Vacaciones");
         btnSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSolicitudActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Inicio");
 
         javax.swing.GroupLayout pVacacionesLayout = new javax.swing.GroupLayout(pVacaciones);
         pVacaciones.setLayout(pVacacionesLayout);
@@ -141,22 +142,22 @@ public class Regular extends javax.swing.JFrame {
             .addGroup(pVacacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cCalendario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pVacacionesLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
                         .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(764, Short.MAX_VALUE))
+                            .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 754, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pVacacionesLayout.setVerticalGroup(
             pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pVacacionesLayout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174)
+                .addComponent(cCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -299,8 +300,12 @@ public class Regular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitudActionPerformed
-        //Date inicio = cInicio.getDate();
-
+        Date vacaciones = cCalendario.getDate();
+        
+        if(vacaciones.after(actual)){
+            System.out.println("Solicitud enviada");
+        }
+        
         //Verifica que el inicio sea menor que la llegada
         //System.out.println(llegada.after(inicio));
 
@@ -317,7 +322,7 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JButton btnFamiliar;
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnVacaciones;
-    private com.toedter.calendar.JCalendar jCalendar2;
+    private com.toedter.calendar.JCalendar cCalendario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
