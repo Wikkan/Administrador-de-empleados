@@ -2,6 +2,7 @@ package usuario;
 
 public class Usuario extends Persona{
     
+    private int idUsuario;
     private String usuario;
     private String contraseña;
     private Boolean administrador;
@@ -34,6 +35,14 @@ public class Usuario extends Persona{
     public void setAdministrador(Boolean Administrador)
     {
         this.administrador = Administrador;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
 

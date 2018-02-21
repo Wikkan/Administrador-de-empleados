@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import usuario.Persona;
 import usuario.Usuario;
 import usuario.Usuario;
@@ -800,13 +802,16 @@ public class Administrador extends javax.swing.JFrame {
             // Crear conexion
             Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
             // Crear declaracion 
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM vacaciones"); // Necesita una columna de si esta aprovada o no
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, v.fecha FROM vacaciones v INNER JOIN usuario u ON u.idUsuario = v.idUsuario INNER JOIN persona p ON p.cedula = u.Persona_cedula");
             // Ejecutar SQL
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next())
             {
-                String[] fila = {"hola5", "adios5"};
+                String nombre = rs.getString("primerNombre") + " " + rs.getString("segundoNombre") + " " + rs.getString("primerApellido") + " " + rs.getString("segundoApellido");
+                DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                String fecha = df.format(rs.getDate("fecha"));
+                String[] fila = {Integer.toString(rs.getInt("cedula")), nombre, fecha};
                 modeloVacaciones.addRow(fila);
             }
             con.close();
@@ -841,9 +846,8 @@ public class Administrador extends javax.swing.JFrame {
             String nombreUsuario = "%" + tfBuscar.getText() + "%";
             Boolean found = false;
             Boolean except = false;
-
             Persona p = new Persona();
-
+            ArrayList<Persona> familia = new ArrayList<Persona>();
             try {
                 Conexion db = new Conexion();
                 // Crear conexion
@@ -870,6 +874,33 @@ public class Administrador extends javax.swing.JFrame {
                     p.setFechaNacimiento(rs.getDate("fechaNacimiento"));
                     found = true;
                 }
+                
+                if (found)
+                {
+                    // Crear declaracion 
+                    stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p INNER JOIN familiares f ON (f.cedula1 = p.cedula OR f.cedula2 = p.cedula) INNER JOIN puesto pu ON pu.idPuesto = p.puesto WHERE p.cedula = ?");
+                    stmt.setInt(1, p.getCedula());
+                    // Ejecutar SQL
+                    rs = stmt.executeQuery();
+                    while (rs.next())
+                    {
+                        Persona familiar = new Persona();
+                        familiar.setCedula(rs.getInt("cedula"));
+                        familiar.setNumeroCuenta(rs.getInt("numeroCuenta"));
+                        familiar.setPrimerNombre(rs.getString("primerNombre"));
+                        familiar.setSegundoNombre(rs.getString("segundoNombre"));
+                        familiar.setPrimerApellido(rs.getString("primerApellido"));
+                        familiar.setSegundoApellido(rs.getString("segundoApellido"));
+                        familiar.setDireccion(rs.getString("direccion"));
+                        familiar.setNumeroCelular(rs.getInt("numeroCelular"));
+                        familiar.setNumeroCasa(rs.getInt("numeroCasa"));
+                        familiar.setCorreo(rs.getString("correo"));
+                        familiar.setPuesto(rs.getString("nombrePuesto"));
+                        familiar.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+                        familia.add(familiar);
+                    }
+                }
+                
                 con.close();
 
             }
@@ -881,9 +912,10 @@ public class Administrador extends javax.swing.JFrame {
 
             if (found && !except)
             {
-                lblNombre.setText(p.getPrimerNombre() + p.getSegundoNombre() + p.getPrimerApellido() + p.getSegundoApellido());
+                lblNombre.setText(p.getPrimerNombre() + " " + p.getSegundoNombre() + " " + p.getPrimerApellido() + " " + p.getSegundoApellido());
                 lblPuesto.setText(p.getPuesto());
                 lbDireccion.setText(p.getDireccion());
+                //Agregar familia a la tabla
                 tpUsuario.setVisible(true);
             }else if(!found && !except)
             {
