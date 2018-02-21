@@ -878,8 +878,15 @@ public class Administrador extends javax.swing.JFrame {
                 if (found)
                 {
                     // Crear declaracion 
-                    stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p INNER JOIN familiares f ON (f.cedula1 = p.cedula OR f.cedula2 = p.cedula) INNER JOIN puesto pu ON pu.idPuesto = p.puesto WHERE p.cedula = ?");
+                    stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p " +
+                            "INNER JOIN ( " +
+                            "SELECT cedula1 AS cedula FROM familiares WHERE cedula2 = ? " +
+                            "UNION (SELECT cedula2 AS cedula FROM familiares WHERE cedula1 = ?) " +
+                            ") familia " +
+                            "ON p.cedula = familia.cedula " +
+                            "INNER JOIN puesto pu ON pu.idPuesto = p.puesto");
                     stmt.setInt(1, p.getCedula());
+                    stmt.setInt(2, p.getCedula());
                     // Ejecutar SQL
                     rs = stmt.executeQuery();
                     while (rs.next())
