@@ -36,26 +36,6 @@ public class Administrador extends javax.swing.JFrame {
         pInfo.setVisible(false);
         modeloFamiliares.clear();
         modeloHistorialVacaciones.clear();
-        
-        //Agregar Familiares y Vacaciones en la lista
-        //modeloFamiliares.addElement("hola1");
-        //modeloFamiliares.addElement("hola2");
-        //modeloFamiliares.addElement("hola3");
-        //modeloFamiliares.addElement("hola4");
-        //lstFamiliares.setModel(modeloFamiliares);
-        
-        //Agregar a la tabla de vacaciones
-        DefaultTableModel modeloVacaciones = (DefaultTableModel) tbVacaciones.getModel();
-        String[] fila1 = {"hola1", "adios1"};
-        String[] fila2 = {"hola2", "adios2"};
-        String[] fila3 = {"hola3", "adios3"};
-        String[] fila4 = {"hola4", "adios4"};
-        String[] fila5 = {"hola5", "adios5"};
-        modeloVacaciones.addRow(fila1);
-        modeloVacaciones.addRow(fila2);
-        modeloVacaciones.addRow(fila3);
-        modeloVacaciones.addRow(fila4);
-        modeloVacaciones.addRow(fila5);
     }
     
     private void cargarUsuario()
@@ -688,9 +668,9 @@ public class Administrador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(infoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pInfoLayout.createSequentialGroup()
@@ -814,6 +794,28 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
+        DefaultTableModel modeloVacaciones = (DefaultTableModel) tbVacaciones.getModel();
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion 
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM vacaciones"); // Necesita una columna de si esta aprovada o no
+            // Ejecutar SQL
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next())
+            {
+                String[] fila = {"hola5", "adios5"};
+                modeloVacaciones.addRow(fila);
+            }
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
         pVacaciones.setVisible(true);
         pEditar.setVisible(false);
         pUsuarios.setVisible(false);
@@ -925,20 +927,10 @@ public class Administrador extends javax.swing.JFrame {
         String primerApellido = tfPrimerApellido.getText();
         String segundoApellido = tfSegundoApellido.getText();
         
-        String nombre = "";
-        
-        nombre += !primerNombre.equals("") ? primerNombre : " ";
-        nombre += !segundoNombre.equals("") ? primerNombre : " ";
-        nombre += !primerApellido.equals("") ? primerNombre : " ";
-        nombre += !segundoApellido.equals("") ? primerNombre : " ";
-                
-        String[] partes = nombre.split(" ");
-        if (partes.length == 3 || partes.length == 4)
-        {
-            // ok
-            System.out.println(partes.length);
-        }
-        //
+       if (primerNombre.equals("") || primerApellido.equals("") || segundoApellido.equals(""))
+       {
+           System.out.println("Campos en el nombre vacios");
+       }
         
         Boolean added = false;
         Boolean except = false;
@@ -961,18 +953,10 @@ public class Administrador extends javax.swing.JFrame {
             stmt = con.prepareStatement("INSERT INTO persona (cedula, numeroCuenta, primerNombre, segundoNombre, primerApellido, segundoApellido, direccion, numeroCelular, numeroCasa, correo, puesto, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, tfCedula.getText());
             stmt.setString(2, tfCuenta.getText());
-            stmt.setString(3, partes[0]);
-            if (partes.length == 3)
-            {
-                stmt.setString(4, "");
-                stmt.setString(5, partes[1]);
-                stmt.setString(6, partes[2]);
-            }else
-            {
-                stmt.setString(4, partes[1]);
-                stmt.setString(5, partes[2]);
-                stmt.setString(6, partes[3]);
-            }
+            stmt.setString(3, primerNombre);
+            stmt.setString(4,(segundoNombre.equals("") ? "" : segundoNombre));
+            stmt.setString(5, primerApellido);
+            stmt.setString(6, segundoApellido);
             stmt.setString(7, tfDireccion.getText());
             stmt.setString(8, tfCel.getText());
             stmt.setString(9, tfCasa.getText());
