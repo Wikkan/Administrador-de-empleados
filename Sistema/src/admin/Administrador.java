@@ -13,11 +13,16 @@ import java.text.SimpleDateFormat;
 import usuario.Persona;
 import usuario.Usuario;
 import usuario.Usuario;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 
 public class Administrador extends javax.swing.JFrame {
     
     private ActionListener listener;
     private Usuario usuario;
+    private static DefaultListModel modeloFamiliares = new DefaultListModel();
+    private static DefaultListModel modeloHistorialVacaciones = new DefaultListModel();
     
     public Administrador(ActionListener listener, Usuario usuario) {
         initComponents();
@@ -29,6 +34,28 @@ public class Administrador extends javax.swing.JFrame {
         pEditar.setVisible(false);
         tpUsuario.setVisible(false);
         pInfo.setVisible(false);
+        modeloFamiliares.clear();
+        modeloHistorialVacaciones.clear();
+        
+        //Agregar Familiares y Vacaciones en la lista
+        //modeloFamiliares.addElement("hola1");
+        //modeloFamiliares.addElement("hola2");
+        //modeloFamiliares.addElement("hola3");
+        //modeloFamiliares.addElement("hola4");
+        //lstFamiliares.setModel(modeloFamiliares);
+        
+        //Agregar a la tabla de vacaciones
+        DefaultTableModel modeloVacaciones = (DefaultTableModel) tbVacaciones.getModel();
+        String[] fila1 = {"hola1", "adios1"};
+        String[] fila2 = {"hola2", "adios2"};
+        String[] fila3 = {"hola3", "adios3"};
+        String[] fila4 = {"hola4", "adios4"};
+        String[] fila5 = {"hola5", "adios5"};
+        modeloVacaciones.addRow(fila1);
+        modeloVacaciones.addRow(fila2);
+        modeloVacaciones.addRow(fila3);
+        modeloVacaciones.addRow(fila4);
+        modeloVacaciones.addRow(fila5);
     }
     
     private void cargarUsuario()
@@ -130,7 +157,7 @@ public class Administrador extends javax.swing.JFrame {
         lstVacaciones = new javax.swing.JList();
         pVacaciones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbVacaciones = new javax.swing.JTable();
         btnCompletar = new javax.swing.JButton();
         pEditar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -502,19 +529,19 @@ public class Administrador extends javax.swing.JFrame {
 
         pVacaciones.setPreferredSize(new java.awt.Dimension(1004, 590));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbVacaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Empleado", "Fecha de vacaciones", "Aceptar Solicitud"
+                "Cédula", "Empleado", "Fecha de vacaciones", "Aceptar Solicitud"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -525,9 +552,14 @@ public class Administrador extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbVacaciones);
 
         btnCompletar.setText("Completar proceso de solicitudes");
+        btnCompletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompletarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pVacacionesLayout = new javax.swing.GroupLayout(pVacaciones);
         pVacaciones.setLayout(pVacacionesLayout);
@@ -549,7 +581,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCompletar)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pEditar.setPreferredSize(new java.awt.Dimension(1004, 590));
@@ -994,6 +1026,15 @@ public class Administrador extends javax.swing.JFrame {
         infoNacimiento.setText(usuario.getFechaNacimiento().toString());
     }//GEN-LAST:event_lblUsuarioMouseClicked
 
+    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletarActionPerformed
+        //Retorna los id's de las solicitudes aprobadas
+        for(int i=0; i<tbVacaciones.getRowCount(); i++){
+            if(tbVacaciones.getValueAt(i, 3) != null){
+                System.out.println(tbVacaciones.getValueAt(i, 0));
+            }
+        }
+    }//GEN-LAST:event_btnCompletarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnAgregarUsuario;
@@ -1046,7 +1087,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbDireccion;
     private javax.swing.JLabel lblCelular;
@@ -1064,6 +1104,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel pUsuarios;
     private javax.swing.JPanel pVacaciones;
     private javax.swing.JTextArea taDireccion;
+    private javax.swing.JTable tbVacaciones;
     private javax.swing.JTextField tfBuscar;
     private javax.swing.JTextField tfCasa;
     private javax.swing.JTextField tfCedula;
