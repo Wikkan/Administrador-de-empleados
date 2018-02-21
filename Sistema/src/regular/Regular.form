@@ -85,8 +85,8 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="tfBuscar" pref="80" max="32767" attributes="0"/>
                   <Component id="btnBuscar" max="32767" attributes="0"/>
-                  <Component id="tfBuscar" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pEditar" max="32767" attributes="0"/>
@@ -413,7 +413,7 @@
                                       <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="infoNacimiento" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="542" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="539" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -443,7 +443,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="infoCorreo" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="infoDireccion" alignment="0" pref="156" max="32767" attributes="0"/>
+                      <Component id="infoDireccion" alignment="0" pref="132" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -475,11 +475,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nombre Completo"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Puesto"/>
           </Properties>
         </Component>
@@ -487,6 +493,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
           </Properties>
         </Component>
@@ -494,6 +503,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Correo"/>
           </Properties>
         </Component>
@@ -501,6 +513,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Casa"/>
           </Properties>
         </Component>
@@ -508,6 +523,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Celular"/>
           </Properties>
         </Component>
@@ -515,6 +533,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="C&#xe9;dula"/>
           </Properties>
         </Component>
@@ -522,6 +543,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Leelawadee UI Semilight" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Fecha de Nacimiento"/>
           </Properties>
         </Component>
