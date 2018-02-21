@@ -15,6 +15,7 @@ public class Regular extends javax.swing.JFrame {
         pBuscar.setVisible(false);
         pVacaciones.setVisible(false);
         pEditar.setVisible(false);
+        pInfo.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +46,24 @@ public class Regular extends javax.swing.JFrame {
         lblDireccion = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         lblCelular = new javax.swing.JLabel();
+        lblNombreCompleto = new javax.swing.JLabel();
+        pInfo = new javax.swing.JPanel();
+        infoNombreCompleto = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        infoPuesto = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        infoDireccion = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        infoCorreo = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        infoCasa = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        infoCelular = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        infoCedula = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        infoNacimiento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -102,7 +121,7 @@ public class Regular extends javax.swing.JFrame {
                                 .addComponent(lbDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pBuscarLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(lblPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE))))
+                                .addComponent(lblPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE))))
                     .addGroup(pBuscarLayout.createSequentialGroup()
                         .addComponent(btnFamiliar)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -147,7 +166,7 @@ public class Regular extends javax.swing.JFrame {
                         .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 754, Short.MAX_VALUE)))
+                        .addGap(0, 769, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pVacacionesLayout.setVerticalGroup(
@@ -209,6 +228,100 @@ public class Regular extends javax.swing.JFrame {
                 .addContainerGap(378, Short.MAX_VALUE))
         );
 
+        lblNombreCompleto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNombreCompletoMouseClicked(evt);
+            }
+        });
+
+        jLabel16.setText("Nombre Completo");
+
+        jLabel17.setText("Puesto");
+
+        jLabel18.setText("Dirección");
+
+        jLabel20.setText("Correo");
+
+        jLabel19.setText("Casa");
+
+        jLabel21.setText("Celular");
+
+        jLabel22.setText("Cédula");
+
+        jLabel24.setText("Fecha de Nacimiento");
+
+        javax.swing.GroupLayout pInfoLayout = new javax.swing.GroupLayout(pInfo);
+        pInfo.setLayout(pInfoLayout);
+        pInfoLayout.setHorizontalGroup(
+            pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infoNombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pInfoLayout.createSequentialGroup()
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(infoPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel17)
+                                .addComponent(jLabel20)
+                                .addComponent(infoCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
+                            .addComponent(infoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19)
+                            .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel18)
+                                    .addComponent(infoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24)
+                                    .addComponent(infoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 542, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        pInfoLayout.setVerticalGroup(
+            pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInfoLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pInfoLayout.createSequentialGroup()
+                        .addComponent(infoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(infoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(infoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(infoCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(infoCasa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(infoNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(150, 150, 150))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,7 +335,8 @@ public class Regular extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(tfBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 572, Short.MAX_VALUE)
+                        .addComponent(lblNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,16 +354,23 @@ public class Regular extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(pBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(pInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -267,6 +388,11 @@ public class Regular extends javax.swing.JFrame {
                     .addContainerGap(192, Short.MAX_VALUE)
                     .addComponent(pBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(199, 199, 199)
+                    .addComponent(pInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         btnCerrar.getAccessibleContext().setAccessibleName("Cerrar");
@@ -278,12 +404,14 @@ public class Regular extends javax.swing.JFrame {
         pEditar.setVisible(true);
         pBuscar.setVisible(false);
         pVacaciones.setVisible(false);
+        pInfo.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
         pVacaciones.setVisible(true);
         pEditar.setVisible(false);
         pBuscar.setVisible(false);
+        pInfo.setVisible(false);
     }//GEN-LAST:event_btnVacacionesActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -291,6 +419,7 @@ public class Regular extends javax.swing.JFrame {
             pBuscar.setVisible(true);
             pEditar.setVisible(false);
             pVacaciones.setVisible(false);
+            pInfo.setVisible(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -315,6 +444,10 @@ public class Regular extends javax.swing.JFrame {
         //System.out.println("Año: " + (inicio.getYear() % 100 + 2000));
     }//GEN-LAST:event_btnSolicitudActionPerformed
 
+    private void lblNombreCompletoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreCompletoMouseClicked
+        pInfo.setVisible(true);
+    }//GEN-LAST:event_lblNombreCompletoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCerrar;
@@ -323,7 +456,23 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JButton btnSolicitud;
     private javax.swing.JButton btnVacaciones;
     private com.toedter.calendar.JCalendar cCalendario;
+    private javax.swing.JLabel infoCasa;
+    private javax.swing.JLabel infoCedula;
+    private javax.swing.JLabel infoCelular;
+    private javax.swing.JLabel infoCorreo;
+    private javax.swing.JLabel infoDireccion;
+    private javax.swing.JLabel infoNacimiento;
+    private javax.swing.JLabel infoNombreCompleto;
+    private javax.swing.JLabel infoPuesto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
@@ -331,10 +480,12 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreCompleto;
     private javax.swing.JLabel lblPuesto;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JPanel pBuscar;
     private javax.swing.JPanel pEditar;
+    private javax.swing.JPanel pInfo;
     private javax.swing.JPanel pVacaciones;
     private javax.swing.JTextArea taDireccion;
     private javax.swing.JTextField tfBuscar;
