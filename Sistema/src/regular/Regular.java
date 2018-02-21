@@ -1,21 +1,71 @@
 package regular;
 
+import conexion.Conexion;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import usuario.Usuario;
 
 public class Regular extends javax.swing.JFrame {
     
     private ActionListener listener;
     private Date actual = new Date();
+    private Usuario usuario = new Usuario();
     
-    public Regular(ActionListener listener) {
+    public Regular(ActionListener listener, Usuario usuario) {
         initComponents();
         this.listener = listener;
-        
+        this.usuario = usuario;
+        cargarUsuario();
         pBuscar.setVisible(false);
         pVacaciones.setVisible(false);
         pEditar.setVisible(false);
         pInfo.setVisible(false);
+    }
+    
+    private void cargarUsuario()
+    {
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion 
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto, u.idUsuario FROM persona p INNER JOIN usuario u ON p.cedula = u.Persona_cedula INNER JOIN puesto pu ON pu.idPuesto = p.puesto WHERE u.nombreUsuario LIKE ?");
+            stmt.setString(1, usuario.getUsuario());
+            // Ejecutar SQL
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                usuario.setIdUsuario(rs.getInt("idUsuario"));
+                usuario.setCedula(rs.getInt("cedula"));
+                usuario.setNumeroCuenta(rs.getInt("numeroCuenta"));
+                usuario.setPrimerNombre(rs.getString("primerNombre"));
+                usuario.setSegundoNombre(rs.getString("segundoNombre"));
+                usuario.setPrimerApellido(rs.getString("primerApellido"));
+                usuario.setSegundoApellido(rs.getString("segundoApellido"));
+                usuario.setDireccion(rs.getString("direccion"));
+                usuario.setNumeroCelular(rs.getInt("numeroCelular"));
+                usuario.setNumeroCasa(rs.getInt("numeroCasa"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setPuesto(rs.getString("nombrePuesto"));
+                usuario.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+            }
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
+        
+        /*lblUsuario.setText(usuario.getPrimerNombre()+" "+usuario.getSegundoNombre()
+                           +" "+usuario.getPrimerApellido()+usuario.getSegundoApellido());*/
     }
 
     @SuppressWarnings("unchecked")
@@ -291,9 +341,9 @@ public class Regular extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(infoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pInfoLayout.createSequentialGroup()
@@ -432,7 +482,30 @@ public class Regular extends javax.swing.JFrame {
         Date vacaciones = cCalendario.getDate();
         
         if(vacaciones.after(actual)){
-            System.out.println("Solicitud enviada");
+            
+            try {
+                Conexion db = new Conexion();
+                // Crear conexion
+                Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+                // Crear declaracion (conseguir id del puesto)
+                PreparedStatement stmt = con.prepareStatement("INSERT INTO vacaciones (fecha, idUsuario) VALUES (?, ?)");
+                DateFormat df = new SimpleDateFormat("yyy/MM/dd");
+                stmt.setString(1, df.format(cCalendario.getDate()));
+                stmt.setInt(2, usuario.getIdUsuario());
+                // Ejecutar SQL
+                int rsn = stmt.executeUpdate();
+
+                if (rsn == 1)
+                {
+                    System.out.println("Solicitud enviada");
+                }
+                con.close();
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                System.out.println("No se logro conectar con el servidor, contacte al administrador");
+            }
         }
         
         //Verifica que el inicio sea menor que la llegada

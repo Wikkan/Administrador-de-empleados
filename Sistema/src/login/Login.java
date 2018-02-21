@@ -118,7 +118,7 @@ public class Login extends javax.swing.JFrame {
                     administrador.setVisible(true);
                 }else
                 {
-                    regular = new Regular(listener);
+                    regular = new Regular(listener, u);
                     regular.setVisible(true);
                 }
                 setVisible(false);
