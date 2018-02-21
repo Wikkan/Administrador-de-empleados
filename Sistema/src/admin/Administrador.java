@@ -923,8 +923,9 @@ public class Administrador extends javax.swing.JFrame {
         pVacaciones.setVisible(false);
         pInfo.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
+    
+    private void cargarSolicitudesVacaciones()
+    {
         DefaultTableModel modeloVacaciones = (DefaultTableModel) tbVacaciones.getModel();
         int rowCount = modeloVacaciones.getRowCount();
         //Remove rows one by one from the end of the table
@@ -936,7 +937,7 @@ public class Administrador extends javax.swing.JFrame {
             // Crear conexion
             Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
             // Crear declaracion 
-            PreparedStatement stmt = con.prepareStatement("SELECT p.*, v.fecha FROM vacaciones v INNER JOIN usuario u ON u.idUsuario = v.idUsuario INNER JOIN persona p ON p.cedula = u.Persona_cedula WHERE v.aprobada = 0");
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, v.fecha, v.idVacacion FROM vacaciones v INNER JOIN usuario u ON u.idUsuario = v.idUsuario INNER JOIN persona p ON p.cedula = u.Persona_cedula WHERE v.aprobada = 0");
             // Ejecutar SQL
             ResultSet rs = stmt.executeQuery();
 
@@ -945,6 +946,7 @@ public class Administrador extends javax.swing.JFrame {
                 String nombre = rs.getString("primerNombre") + " " + rs.getString("segundoNombre") + " " + rs.getString("primerApellido") + " " + rs.getString("segundoApellido");
                 DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                 String fecha = df.format(rs.getDate("fecha"));
+                //Integer.toString(rs.getInt("idVacacion"))
                 String[] fila = {Integer.toString(rs.getInt("cedula")), nombre, fecha};
                 modeloVacaciones.addRow(fila);
             }
@@ -955,6 +957,13 @@ public class Administrador extends javax.swing.JFrame {
             //e.printStackTrace();
             System.out.println("No se logro conectar con el servidor, contacte al administrador");
         }
+        for(int i=0; i<tbVacaciones.getRowCount(); i++){
+            tbVacaciones.setValueAt(false, i, 3);
+        }
+    }
+    
+    private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
+        cargarSolicitudesVacaciones();
         pVacaciones.setVisible(true);
         pEditar.setVisible(false);
         pUsuarios.setVisible(false);
@@ -1190,7 +1199,41 @@ public class Administrador extends javax.swing.JFrame {
         infoCasa.setText(""+usuario.getNumeroCasa());
         infoCelular.setText(""+usuario.getNumeroCelular());
         infoNacimiento.setText(usuario.getFechaNacimiento().toString());
+<<<<<<< HEAD
     }//GEN-LAST:event_btnInfoActionPerformed
+=======
+    }//GEN-LAST:event_lblUsuarioMouseClicked
+
+    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletarActionPerformed
+        //Retorna los id's de las solicitudes aprobadas
+        for(int i=0; i<tbVacaciones.getRowCount(); i++){
+            if(tbVacaciones.getValueAt(i, 3).equals(true)){
+                try {
+                    Conexion db = new Conexion();
+                    // Crear conexion
+                    Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+                    // Crear declaracion (conseguir id del puesto)
+                    PreparedStatement stmt = con.prepareStatement("UPDATE vacaciones SET aprobada = 1 WHERE idVacacion = ?");
+                    stmt.setInt(1, Integer.parseInt((String)tbVacaciones.getValueAt(i, 0)));
+                    // Ejecutar SQL
+                    int rsn = stmt.executeUpdate();
+
+                    if (rsn == 1)
+                    {
+                        System.out.println("Solicitud enviada");
+                    }
+                    con.close();
+
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    System.out.println("No se logro conectar con el servidor, contacte al administrador");
+                }
+            }
+        }
+        cargarSolicitudesVacaciones();
+    }//GEN-LAST:event_btnCompletarActionPerformed
+>>>>>>> eb169bff81a651069250e32f2f59669d348c8bc0
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
