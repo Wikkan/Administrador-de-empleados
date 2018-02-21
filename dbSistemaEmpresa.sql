@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SistemaEmpresa`.`Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombreUsuario` VARCHAR(45) NOT NULL,
-  `contraseÃ±a` VARCHAR(200) NOT NULL,
+  `contraseña` VARCHAR(200) NOT NULL,
   `Persona_cedula` INT NOT NULL,
   `administrador` BIT NOT NULL,
   PRIMARY KEY (`idUsuario`),
@@ -104,8 +104,8 @@ CREATE TABLE IF NOT EXISTS `SistemaEmpresa`.`Vacaciones` (
   `idVacacion` INT NOT NULL AUTO_INCREMENT,
   `fecha` DATE NULL,
   `idUsuario` INT NULL,
+  `aprobada` BIT NULL,
   PRIMARY KEY (`idVacacion`),
-  UNIQUE INDEX `idUsuario_UNIQUE` (`idUsuario` ASC),
   UNIQUE INDEX `idVacacion_UNIQUE` (`idVacacion` ASC),
   CONSTRAINT `vacacion`
     FOREIGN KEY (`idUsuario`)
@@ -136,7 +136,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-insert into puesto values (0, 'admi');
-insert into persona values (116490794, 116490794, 'A', 'A', 'A', 'B', 'a', 1, 10, 'a@c', 1, '2000-1-1');
-insert into usuario values (0, 'j', md5('hola'), 116490794, 1);
