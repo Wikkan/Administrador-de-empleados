@@ -23,11 +23,47 @@ public class Administrador extends javax.swing.JFrame {
         initComponents();
         this.listener = listener;
         this.usuario = usuario;
-        
+        cargarUsuario();
         pUsuarios.setVisible(false);
         pVacaciones.setVisible(false);
         pEditar.setVisible(false);
         tpUsuario.setVisible(false);
+    }
+    
+    private void cargarUsuario()
+    {
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion 
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p INNER JOIN usuario u ON p.cedula = u.Persona_cedula INNER JOIN puesto pu ON pu.idPuesto = p.puesto WHERE u.nombreUsuario LIKE ?");
+            stmt.setString(1, usuario.getUsuario());
+            // Ejecutar SQL
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                usuario.setCedula(rs.getInt("cedula"));
+                usuario.setNumeroCuenta(rs.getInt("numeroCuenta"));
+                usuario.setPrimerNombre(rs.getString("primerNombre"));
+                usuario.setSegundoNombre(rs.getString("segundoNombre"));
+                usuario.setPrimerApellido(rs.getString("primerApellido"));
+                usuario.setSegundoApellido(rs.getString("segundoApellido"));
+                usuario.setDireccion(rs.getString("direccion"));
+                usuario.setNumeroCelular(rs.getInt("numeroCelular"));
+                usuario.setNumeroCasa(rs.getInt("numeroCasa"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setPuesto(rs.getString("nombrePuesto"));
+                usuario.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+            }
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -595,7 +631,7 @@ public class Administrador extends javax.swing.JFrame {
 
             }
             catch (Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 except = true;
                 System.out.println("No se logro conectar con el servidor, contacte al administrador");
             }
@@ -614,6 +650,29 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
+        cbPuestos.removeAllItems();
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion 
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM puesto");
+            // Ejecutar SQL
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next())
+            {
+                cbPuestos.addItem(rs.getString("nombrePuesto"));
+            }
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
+        
+        
         pAgregar.setVisible(true);
         tpUsuario.setVisible(false);
     }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
@@ -625,6 +684,7 @@ public class Administrador extends javax.swing.JFrame {
         if (partes.length == 3 || partes.length == 4)
         {
             // ok
+            System.out.println(partes.length);
         }
         //
         
@@ -640,9 +700,13 @@ public class Administrador extends javax.swing.JFrame {
             stmt.setString(1, String.valueOf(cbPuestos.getSelectedItem()));
             // Ejecutar SQL
             ResultSet rs = stmt.executeQuery();
-            int idPuesto = rs.getInt("idPuesto");
+            int idPuesto = 0;
+            if (rs.next())
+            {
+                idPuesto = rs.getInt("idPuesto");
+            }
             // Crear declaracion (insertar persona)
-            stmt = con.prepareStatement("INSERT INTO persona (cedula, numeroCuenta, primerNombre, segundoNombre, primerApellido, segundoApellido, direccion, numeroCelular, numeroCasa, correo, puesto, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("INSERT INTO persona (cedula, numeroCuenta, primerNombre, segundoNombre, primerApellido, segundoApellido, direccion, numeroCelular, numeroCasa, correo, puesto, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, tfCedula.getText());
             stmt.setString(2, tfCuenta.getText());
             stmt.setString(3, partes[0]);
@@ -662,14 +726,13 @@ public class Administrador extends javax.swing.JFrame {
             stmt.setString(9, tfCasa.getText());
             stmt.setString(10, jTextField1.getText());
             stmt.setString(11, String.valueOf(idPuesto));
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat df = new SimpleDateFormat("yyy/MM/dd");
             stmt.setString(12, df.format(jCalendar1.getDate()));
             // Ejecutar SQL
             int rsn = stmt.executeUpdate();
             
             //Insertar usuario
-            stmt = con.prepareStatement("INSERT INTO usuario (nombreUsuario, contraseña, Persona_cedula)" +
-                                                           " VALUES (?, MD5(?), ?)");
+            stmt = con.prepareStatement("INSERT INTO usuario (nombreUsuario, contraseña, Persona_cedula, administrador) VALUES (?, MD5(?), ?, 0)");
             stmt.setString(1, tfUsuario.getText());
             stmt.setString(2, tfContrasena.getText());
             stmt.setString(3, tfCedula.getText());
