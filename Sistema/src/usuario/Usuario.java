@@ -1,16 +1,10 @@
-package login;
+package usuario;
 
-public class Usuario {
-
-    private int cedula;
+public class Usuario extends Persona{
+    
     private String usuario;
     private String contraseña;
     private Boolean administrador;
-    
-    public int getCedula()
-    {
-        return this.cedula;
-    }
     
     public String getUsuario()
     {
@@ -25,11 +19,6 @@ public class Usuario {
     public Boolean getAdministrador()
     {
         return this.administrador;
-    }
-    
-    public void setCedula(int Cedula)
-    {
-        this.cedula = Cedula;
     }
     
     public void setUsuario(String Usuario)

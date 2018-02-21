@@ -1,14 +1,24 @@
 package admin;
 
+import conexion.Conexion;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.*;
+import usuario.Persona;
+import usuario.Usuario;
 
 public class Administrador extends javax.swing.JFrame {
     
     private ActionListener listener;
+    private Usuario usuario;
     
-    public Administrador(ActionListener listener) {
+    public Administrador(ActionListener listener, Usuario usuario) {
         initComponents();
         this.listener = listener;
+        this.usuario = usuario;
         
         pUsuarios.setVisible(false);
         pVacaciones.setVisible(false);
@@ -540,14 +550,65 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if(!tfBuscar.getText().equals("")){
+            
             tpUsuario.setVisible(true);
             pAgregar.setVisible(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
-        pAgregar.setVisible(true);
-        tpUsuario.setVisible(false);
+        String nombreUsuario = btnBuscar.getText();
+        Boolean found = false;
+        Boolean except = false;
+        
+        Persona p = new Persona();
+        
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p\n" +
+                                                "INNER JOIN usuario u ON p.cedula = u.Persona_cedula\n" +
+                                                "INNER JOIN puesto pu ON pu.idPuesto = p.puesto\n" +
+                                                "WHERE p.primerNombre LIKE '%?%'");
+            stmt.setString(1, nombreUsuario);
+            // Ejecutar SQL
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next())
+            {
+                p.setCedula(rs.getInt("cedula"));
+                p.setNumeroCuenta(rs.getInt("numeroCuenta"));
+                p.setPrimerNombre(rs.getString("primerNombre"));
+                p.setSegundoNombre(rs.getString("segundoNombre"));
+                p.setPrimerApellido(rs.getString("primerApellido"));
+                p.setSegundoApellido(rs.getString("segundoApellido"));
+                p.setDireccion(rs.getString("direccion"));
+                p.setNumeroCelular(rs.getInt("numeroCelular"));
+                p.setNumeroCasa(rs.getInt("numeroCasa"));
+                p.setCorreo(rs.getString("correo"));
+                p.setPuesto(rs.getString("nombrePuesto"));
+                p.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+                found = true;
+            }
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            except = true;
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
+        
+        if (found && !except)
+        {
+            pAgregar.setVisible(true);
+            tpUsuario.setVisible(true);
+        }else
+        {
+            System.out.append("No se encontro el usuario: "+ nombreUsuario);
+        }
     }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

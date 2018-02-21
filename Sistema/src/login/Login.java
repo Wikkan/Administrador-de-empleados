@@ -1,5 +1,6 @@
 package login;
 
+import usuario.Usuario;
 import conexion.Conexion;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -79,6 +80,7 @@ public class Login extends javax.swing.JFrame {
         {
             Boolean found = false;
             Boolean admin = false;
+            Boolean except = false;
             Usuario u = new Usuario();
             u.setUsuario(tfUsuario.getText());
             u.setContraseña(pContrasena.getText());
@@ -96,6 +98,7 @@ public class Login extends javax.swing.JFrame {
                 
                 if (rs.next())
                 {
+                    u.setCedula(rs.getInt("Persona_cedula"));
                     if (rs.getInt("administrador") == 1) admin = true;
                     found = true;
                 }
@@ -104,17 +107,15 @@ public class Login extends javax.swing.JFrame {
             }
             catch (Exception e){
                 //e.printStackTrace();
+                except = true;
                 System.out.println("No se logro conectar con el servidor, contacte al administrador");
             }
-            if (found)
+            if (found && !except)
             {
                 if (admin)
                 {
-                    regular = new Regular(listener);
-                    regular.setVisible(true);
-                    
-                    //administrador = new Administrador(listener);
-                    //administrador.setVisible(true);
+                    administrador = new Administrador(listener, u);
+                    administrador.setVisible(true);
                 }else
                 {
                     regular = new Regular(listener);
