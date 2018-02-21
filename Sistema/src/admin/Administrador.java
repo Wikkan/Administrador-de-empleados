@@ -797,12 +797,17 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
         DefaultTableModel modeloVacaciones = (DefaultTableModel) tbVacaciones.getModel();
+        int rowCount = modeloVacaciones.getRowCount();
+        //Remove rows one by one from the end of the table
+        for (int i = rowCount - 1; i >= 0; i--) {
+            modeloVacaciones.removeRow(i);
+        }
         try {
             Conexion db = new Conexion();
             // Crear conexion
             Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
             // Crear declaracion 
-            PreparedStatement stmt = con.prepareStatement("SELECT p.*, v.fecha FROM vacaciones v INNER JOIN usuario u ON u.idUsuario = v.idUsuario INNER JOIN persona p ON p.cedula = u.Persona_cedula");
+            PreparedStatement stmt = con.prepareStatement("SELECT p.*, v.fecha FROM vacaciones v INNER JOIN usuario u ON u.idUsuario = v.idUsuario INNER JOIN persona p ON p.cedula = u.Persona_cedula WHERE v.aprobada = 0");
             // Ejecutar SQL
             ResultSet rs = stmt.executeQuery();
 

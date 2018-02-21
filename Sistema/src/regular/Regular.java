@@ -488,7 +488,7 @@ public class Regular extends javax.swing.JFrame {
                 // Crear conexion
                 Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
                 // Crear declaracion (conseguir id del puesto)
-                PreparedStatement stmt = con.prepareStatement("INSERT INTO vacaciones (fecha, idUsuario) VALUES (?, ?)");
+                PreparedStatement stmt = con.prepareStatement("INSERT INTO vacaciones (fecha, idUsuario, aprobada) VALUES (?, ?, 0)");
                 DateFormat df = new SimpleDateFormat("yyy/MM/dd");
                 stmt.setString(1, df.format(cCalendario.getDate()));
                 stmt.setInt(2, usuario.getIdUsuario());
