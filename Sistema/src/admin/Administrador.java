@@ -1,5 +1,6 @@
 package admin;
 
+import java.awt.event.ActionListener;
 import conexion.Conexion;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -7,7 +8,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import usuario.Persona;
+import usuario.Usuario;
 import usuario.Usuario;
 
 public class Administrador extends javax.swing.JFrame {
@@ -167,6 +171,11 @@ public class Administrador extends javax.swing.JFrame {
         jLabel15.setText("Correo");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pAgregarLayout = new javax.swing.GroupLayout(pAgregar);
         pAgregar.setLayout(pAgregarLayout);
@@ -550,47 +559,126 @@ public class Administrador extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if(!tfBuscar.getText().equals("")){
-            
-            tpUsuario.setVisible(true);
-            pAgregar.setVisible(false);
+            String nombreUsuario = "%" + tfBuscar.getText() + "%";
+            Boolean found = false;
+            Boolean except = false;
+
+            Persona p = new Persona();
+
+            try {
+                Conexion db = new Conexion();
+                // Crear conexion
+                Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+                // Crear declaracion 
+                PreparedStatement stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p INNER JOIN usuario u ON p.cedula = u.Persona_cedula INNER JOIN puesto pu ON pu.idPuesto = p.puesto WHERE u.nombreUsuario LIKE ?");
+                stmt.setString(1, nombreUsuario);
+                // Ejecutar SQL
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next())
+                {
+                    p.setCedula(rs.getInt("cedula"));
+                    p.setNumeroCuenta(rs.getInt("numeroCuenta"));
+                    p.setPrimerNombre(rs.getString("primerNombre"));
+                    p.setSegundoNombre(rs.getString("segundoNombre"));
+                    p.setPrimerApellido(rs.getString("primerApellido"));
+                    p.setSegundoApellido(rs.getString("segundoApellido"));
+                    p.setDireccion(rs.getString("direccion"));
+                    p.setNumeroCelular(rs.getInt("numeroCelular"));
+                    p.setNumeroCasa(rs.getInt("numeroCasa"));
+                    p.setCorreo(rs.getString("correo"));
+                    p.setPuesto(rs.getString("nombrePuesto"));
+                    p.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+                    found = true;
+                }
+                con.close();
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                except = true;
+                System.out.println("No se logro conectar con el servidor, contacte al administrador");
+            }
+
+            if (found && !except)
+            {
+                lblNombre.setText(p.getPrimerNombre() + p.getSegundoNombre() + p.getPrimerApellido() + p.getSegundoApellido());
+                lblPuesto.setText(p.getPuesto());
+                lbDireccion.setText(p.getDireccion());
+                tpUsuario.setVisible(true);
+            }else if(!found && !except)
+            {
+                System.out.append("No se encontro el usuario: "+ nombreUsuario);
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
-        String nombreUsuario = btnBuscar.getText();
-        Boolean found = false;
+        pAgregar.setVisible(true);
+        tpUsuario.setVisible(false);
+    }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // Validar celdas vacias
+        String nombre = tfNombre.getText();
+        String[] partes = nombre.split(" ");
+        if (partes.length == 3 || partes.length == 4)
+        {
+            // ok
+        }
+        //
+        
+        Boolean added = false;
         Boolean except = false;
-        
-        Persona p = new Persona();
-        
+
         try {
             Conexion db = new Conexion();
             // Crear conexion
             Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
-            // Crear declaracion
-            PreparedStatement stmt = con.prepareStatement("SELECT p.*, pu.nombrePuesto FROM persona p\n" +
-                                                "INNER JOIN usuario u ON p.cedula = u.Persona_cedula\n" +
-                                                "INNER JOIN puesto pu ON pu.idPuesto = p.puesto\n" +
-                                                "WHERE p.primerNombre LIKE '%?%'");
-            stmt.setString(1, nombreUsuario);
+            // Crear declaracion (conseguir id del puesto)
+            PreparedStatement stmt = con.prepareStatement("SELECT idPuesto FROM puesto WHERE nombrePuesto=?");
+            stmt.setString(1, String.valueOf(cbPuestos.getSelectedItem()));
             // Ejecutar SQL
             ResultSet rs = stmt.executeQuery();
-
-            if (rs.next())
+            int idPuesto = rs.getInt("idPuesto");
+            // Crear declaracion (insertar persona)
+            stmt = con.prepareStatement("INSERT INTO persona (cedula, numeroCuenta, primerNombre, segundoNombre, primerApellido, segundoApellido, direccion, numeroCelular, numeroCasa, correo, puesto, fechaNacimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setString(1, tfCedula.getText());
+            stmt.setString(2, tfCuenta.getText());
+            stmt.setString(3, partes[0]);
+            if (partes.length == 3)
             {
-                p.setCedula(rs.getInt("cedula"));
-                p.setNumeroCuenta(rs.getInt("numeroCuenta"));
-                p.setPrimerNombre(rs.getString("primerNombre"));
-                p.setSegundoNombre(rs.getString("segundoNombre"));
-                p.setPrimerApellido(rs.getString("primerApellido"));
-                p.setSegundoApellido(rs.getString("segundoApellido"));
-                p.setDireccion(rs.getString("direccion"));
-                p.setNumeroCelular(rs.getInt("numeroCelular"));
-                p.setNumeroCasa(rs.getInt("numeroCasa"));
-                p.setCorreo(rs.getString("correo"));
-                p.setPuesto(rs.getString("nombrePuesto"));
-                p.setFechaNacimiento(rs.getDate("fechaNacimiento"));
-                found = true;
+                stmt.setString(4, "");
+                stmt.setString(5, partes[1]);
+                stmt.setString(6, partes[2]);
+            }else
+            {
+                stmt.setString(4, partes[1]);
+                stmt.setString(5, partes[2]);
+                stmt.setString(6, partes[3]);
+            }
+            stmt.setString(7, tfDireccion.getText());
+            stmt.setString(8, tfCel.getText());
+            stmt.setString(9, tfCasa.getText());
+            stmt.setString(10, jTextField1.getText());
+            stmt.setString(11, String.valueOf(idPuesto));
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            stmt.setString(12, df.format(jCalendar1.getDate()));
+            // Ejecutar SQL
+            int rsn = stmt.executeUpdate();
+            
+            //Insertar usuario
+            stmt = con.prepareStatement("INSERT INTO usuario (nombreUsuario, contraseña, Persona_cedula)" +
+                                                           " VALUES (?, MD5(?), ?)");
+            stmt.setString(1, tfUsuario.getText());
+            stmt.setString(2, tfContrasena.getText());
+            stmt.setString(3, tfCedula.getText());
+            // Ejecutar SQL
+            rsn = stmt.executeUpdate();
+            
+            if (rsn == 1)
+            {
+                added = true;
             }
             con.close();
 
@@ -600,16 +688,13 @@ public class Administrador extends javax.swing.JFrame {
             except = true;
             System.out.println("No se logro conectar con el servidor, contacte al administrador");
         }
-        
-        if (found && !except)
+
+        if (added && !except)
         {
-            pAgregar.setVisible(true);
-            tpUsuario.setVisible(true);
-        }else
-        {
-            System.out.append("No se encontro el usuario: "+ nombreUsuario);
+            System.out.append("Se agrego el usuario: "+ tfUsuario.getText());
         }
-    }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
