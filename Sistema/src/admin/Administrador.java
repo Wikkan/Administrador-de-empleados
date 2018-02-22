@@ -33,7 +33,7 @@ public class Administrador extends javax.swing.JFrame {
         cargarUsuario();
         pUsuarios.setVisible(false);
         pVacaciones.setVisible(false);
-        pEditar.setVisible(false);
+        pPuesto.setVisible(false);
         tpUsuario.setVisible(false);
         modeloFamiliares.clear();
         modeloHistorialVacaciones.clear();
@@ -92,7 +92,8 @@ public class Administrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnEditar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnAgregarPuesto = new javax.swing.JButton();
         btnVacaciones = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
@@ -143,22 +144,18 @@ public class Administrador extends javax.swing.JFrame {
         lbDireccion = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblSueldo = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        lstFamiliares = new javax.swing.JList();
         jScrollPane5 = new javax.swing.JScrollPane();
         lstVacaciones = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tFamiliares = new javax.swing.JTable();
         pVacaciones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVacaciones = new javax.swing.JTable();
-        btnCompletar = new javax.swing.JButton();
-        pEditar = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        taDireccion = new javax.swing.JTextArea();
-        tfTelefono = new javax.swing.JTextField();
-        tfCelular = new javax.swing.JTextField();
-        lblDireccion = new javax.swing.JLabel();
-        lblTelefono = new javax.swing.JLabel();
-        lblCelular = new javax.swing.JLabel();
+        btnCompleta = new javax.swing.JButton();
+        pPuesto = new javax.swing.JPanel();
+        lbl = new javax.swing.JLabel();
+        tfPuesto = new javax.swing.JTextField();
+        btnPuesto = new javax.swing.JButton();
         pInfo = new javax.swing.JPanel();
         infoNombreCompleto = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -176,165 +173,188 @@ public class Administrador extends javax.swing.JFrame {
         infoCedula = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         infoNacimiento = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(900, 600));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jSeparator1.setBackground(new java.awt.Color(255, 204, 51));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(516, Short.MAX_VALUE))
         );
 
-        btnEditar.setBackground(new java.awt.Color(31, 36, 121));
-        btnEditar.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
-        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar.setText("Editar Información");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarPuesto.setBackground(new java.awt.Color(0, 0, 0));
+        btnAgregarPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
+        btnAgregarPuesto.setForeground(new java.awt.Color(255, 204, 51));
+        btnAgregarPuesto.setText("Agregar Puesto");
+        btnAgregarPuesto.setBorderPainted(false);
+        btnAgregarPuesto.setSelected(true);
+        btnAgregarPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnAgregarPuestoActionPerformed(evt);
             }
         });
 
-        btnVacaciones.setBackground(new java.awt.Color(31, 36, 121));
+        btnVacaciones.setBackground(new java.awt.Color(0, 0, 0));
         btnVacaciones.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
-        btnVacaciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnVacaciones.setForeground(new java.awt.Color(255, 204, 51));
         btnVacaciones.setText("Aprobar Vacaciones");
+        btnVacaciones.setBorderPainted(false);
+        btnVacaciones.setSelected(true);
         btnVacaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVacacionesActionPerformed(evt);
             }
         });
 
-        btnCerrar.setBackground(new java.awt.Color(31, 36, 121));
+        btnCerrar.setBackground(new java.awt.Color(0, 0, 0));
         btnCerrar.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setForeground(new java.awt.Color(255, 204, 51));
         btnCerrar.setText("Cerrar Sesión");
         btnCerrar.setActionCommand("Cerrar");
+        btnCerrar.setBorderPainted(false);
+        btnCerrar.setSelected(true);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
             }
         });
 
-        btnUsuarios.setBackground(new java.awt.Color(31, 36, 121));
+        btnUsuarios.setBackground(new java.awt.Color(0, 0, 0));
         btnUsuarios.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
-        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setForeground(new java.awt.Color(255, 204, 51));
         btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setSelected(true);
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
             }
         });
 
-        btnInfo.setBackground(new java.awt.Color(31, 36, 121));
+        btnInfo.setBackground(new java.awt.Color(0, 0, 0));
         btnInfo.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
-        btnInfo.setForeground(new java.awt.Color(255, 255, 255));
+        btnInfo.setForeground(new java.awt.Color(255, 204, 51));
         btnInfo.setText("Información Personal"); // NOI18N
+        btnInfo.setBorderPainted(false);
+        btnInfo.setSelected(true);
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfoActionPerformed(evt);
             }
         });
 
-        pUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        pUsuarios.setBackground(new java.awt.Color(0, 0, 0));
+        pUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         pUsuarios.setPreferredSize(new java.awt.Dimension(800, 450));
 
         tfBuscar.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
 
-        btnBuscar.setBackground(new java.awt.Color(31, 36, 121));
+        btnBuscar.setBackground(new java.awt.Color(0, 0, 0));
         btnBuscar.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setForeground(new java.awt.Color(255, 204, 51));
         btnBuscar.setText("Buscar Usuario");
+        btnBuscar.setBorderPainted(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
 
-        btnAgregarUsuario.setBackground(new java.awt.Color(31, 36, 121));
+        btnAgregarUsuario.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregarUsuario.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
-        btnAgregarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarUsuario.setForeground(new java.awt.Color(255, 204, 51));
         btnAgregarUsuario.setText("Agregar Usuario");
+        btnAgregarUsuario.setBorderPainted(false);
         btnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarUsuarioActionPerformed(evt);
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(31, 36, 121));
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setForeground(new java.awt.Color(255, 204, 51));
         btnEliminar.setText("Eliminar Usuario");
+        btnEliminar.setBorderPainted(false);
 
-        pAgregar.setBackground(new java.awt.Color(255, 255, 255));
+        pAgregar.setBackground(new java.awt.Color(255, 204, 0));
         pAgregar.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel5.setText("Dirección");
 
-        tfDireccion.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfDireccion.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel6.setText("Puesto");
 
         cbPuestos.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel7.setText("Cédula");
 
-        tfCedula.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfCedula.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
         tfCedula.setToolTipText("");
 
-        jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel8.setText("Celular");
 
-        tfCel.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfCel.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel9.setText("Cuenta");
 
-        tfCuenta.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfCuenta.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         jLabel10.setText("Facha de nacimiento");
 
-        jLabel11.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel11.setText("Sueldo");
 
-        tfSueldo.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfSueldo.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel12.setText("Nombre de Usuario");
 
-        tfUsuario.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfUsuario.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel13.setText("Contraseña");
 
-        tfContrasena.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfContrasena.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel14.setText("Casa");
 
-        tfCasa.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfCasa.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel15.setText("Correo");
 
-        jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        btnAgregar.setBackground(new java.awt.Color(31, 36, 121));
+        btnAgregar.setBackground(new java.awt.Color(0, 0, 0));
         btnAgregar.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("Agregar");
@@ -344,25 +364,25 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        jLabel25.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel25.setText("Primer Nombre");
 
-        tfPrimerNombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfPrimerNombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel26.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel26.setText("Segundo Nombre");
 
-        tfSegundoNombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfSegundoNombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel27.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel27.setText("Primer Apellido");
 
-        tfPrimerApellido.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfPrimerApellido.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        jLabel28.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel28.setText("Segundo Apellido");
 
-        tfSegundoApellido.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        tfSegundoApellido.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout pAgregarLayout = new javax.swing.GroupLayout(pAgregar);
         pAgregar.setLayout(pAgregarLayout);
@@ -400,19 +420,18 @@ public class Administrador extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pAgregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField1))
-                                .addGroup(pAgregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfCedula))
-                                .addGroup(pAgregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfCedula))
+                            .addGroup(pAgregarLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5)
                             .addGroup(pAgregarLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -431,7 +450,7 @@ public class Administrador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tfDireccion))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         pAgregarLayout.setVerticalGroup(
             pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,19 +478,17 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(jLabel28)))
                     .addGroup(pAgregarLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel7)
-                                .addComponent(tfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pAgregarLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(tfCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(tfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(tfCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -499,25 +516,36 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(tfContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        tpUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        tpUsuario.setBackground(new java.awt.Color(255, 204, 0));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 0));
 
+        lblNombre.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 18)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Puesto");
 
+        lblPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Dirección");
 
+        lbDireccion.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Sueldo");
+
+        lblSueldo.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -534,7 +562,7 @@ public class Administrador extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
+                        .addComponent(lbDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -544,9 +572,9 @@ public class Administrador extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -563,19 +591,41 @@ public class Administrador extends javax.swing.JFrame {
 
         tpUsuario.addTab("Información de Usuario", jPanel2);
 
-        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane5.setBackground(new java.awt.Color(255, 204, 0));
 
-        lstFamiliares.setPreferredSize(new java.awt.Dimension(275, 147));
-        jScrollPane4.setViewportView(lstFamiliares);
-
-        tpUsuario.addTab("Familiares", jScrollPane4);
-
-        jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
-
+        lstVacaciones.setBackground(new java.awt.Color(255, 204, 0));
+        lstVacaciones.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         lstVacaciones.setPreferredSize(new java.awt.Dimension(275, 147));
         jScrollPane5.setViewportView(lstVacaciones);
 
         tpUsuario.addTab("Vacaciones", jScrollPane5);
+
+        tFamiliares.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cédula", "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tFamiliares);
+
+        tpUsuario.addTab("tab4", jScrollPane2);
 
         javax.swing.GroupLayout pUsuariosLayout = new javax.swing.GroupLayout(pUsuarios);
         pUsuarios.setLayout(pUsuariosLayout);
@@ -585,15 +635,14 @@ public class Administrador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pUsuariosLayout.createSequentialGroup()
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pUsuariosLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(tpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pUsuariosLayout.createSequentialGroup()
-                        .addGroup(pUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfBuscar, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pUsuariosLayout.createSequentialGroup()
-                                .addComponent(btnAgregarUsuario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar)))
+                        .addComponent(btnAgregarUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)))
                 .addContainerGap(115, Short.MAX_VALUE))
@@ -607,35 +656,41 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(pUsuariosLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar)
                     .addComponent(btnAgregarUsuario)
                     .addComponent(btnEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
             .addGroup(pUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pUsuariosLayout.createSequentialGroup()
-                    .addGap(0, 22, Short.MAX_VALUE)
-                    .addComponent(pAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 79, Short.MAX_VALUE)
+                    .addComponent(pAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        pVacaciones.setBackground(new java.awt.Color(255, 204, 0));
         pVacaciones.setPreferredSize(new java.awt.Dimension(800, 450));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 204, 0));
+
+        tbVacaciones.setBackground(new java.awt.Color(255, 204, 0));
+        tbVacaciones.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
         tbVacaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cédula", "Empleado", "Fecha de vacaciones", "Aceptar Solicitud"
+                "Id", "Cédula", "Empleado", "", "Fecha", "Aceptar Solicitud"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -646,12 +701,16 @@ public class Administrador extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbVacaciones.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbVacaciones);
 
-        btnCompletar.setText("Completar proceso de solicitudes");
-        btnCompletar.addActionListener(new java.awt.event.ActionListener() {
+        btnCompleta.setBackground(new java.awt.Color(0, 0, 0));
+        btnCompleta.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
+        btnCompleta.setForeground(new java.awt.Color(255, 204, 0));
+        btnCompleta.setText("Completar Solicitud");
+        btnCompleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompletarActionPerformed(evt);
+                btnCompletaActionPerformed(evt);
             }
         });
 
@@ -664,7 +723,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
                     .addGroup(pVacacionesLayout.createSequentialGroup()
-                        .addComponent(btnCompletar)
+                        .addComponent(btnCompleta)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -672,104 +731,101 @@ public class Administrador extends javax.swing.JFrame {
             pVacacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pVacacionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCompletar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCompleta)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        pEditar.setPreferredSize(new java.awt.Dimension(800, 450));
+        pPuesto.setBackground(new java.awt.Color(255, 204, 0));
+        pPuesto.setPreferredSize(new java.awt.Dimension(800, 450));
 
-        taDireccion.setColumns(20);
-        taDireccion.setRows(5);
-        jScrollPane2.setViewportView(taDireccion);
+        lbl.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
+        lbl.setText("Nombre del Puesto");
 
-        lblDireccion.setText("Dirección");
+        tfPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 12)); // NOI18N
 
-        lblTelefono.setText("Teléfono");
+        btnPuesto.setBackground(new java.awt.Color(0, 0, 0));
+        btnPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
+        btnPuesto.setForeground(new java.awt.Color(255, 204, 0));
+        btnPuesto.setText("Agregar Puesto");
+        btnPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPuestoActionPerformed(evt);
+            }
+        });
 
-        lblCelular.setText("Celular");
-
-        javax.swing.GroupLayout pEditarLayout = new javax.swing.GroupLayout(pEditar);
-        pEditar.setLayout(pEditarLayout);
-        pEditarLayout.setHorizontalGroup(
-            pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pEditarLayout.createSequentialGroup()
-                .addGroup(pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDireccion)
-                    .addComponent(lblTelefono)
-                    .addComponent(lblCelular))
-                .addGap(27, 27, 27)
-                .addGroup(pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pEditarLayout.createSequentialGroup()
-                        .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2))
-                    .addGroup(pEditarLayout.createSequentialGroup()
-                        .addComponent(tfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pEditarLayout.setVerticalGroup(
-            pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pEditarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pPuestoLayout = new javax.swing.GroupLayout(pPuesto);
+        pPuesto.setLayout(pPuestoLayout);
+        pPuestoLayout.setHorizontalGroup(
+            pPuestoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPuestoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCelular))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addGroup(pPuestoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl)
+                    .addGroup(pPuestoLayout.createSequentialGroup()
+                        .addComponent(tfPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(btnPuesto)))
+                .addContainerGap(155, Short.MAX_VALUE))
+        );
+        pPuestoLayout.setVerticalGroup(
+            pPuestoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPuestoLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lbl)
+                .addGap(18, 18, 18)
+                .addGroup(pPuestoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPuesto)
+                    .addComponent(tfPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
-        pInfo.setBackground(new java.awt.Color(255, 255, 255));
+        pInfo.setBackground(new java.awt.Color(255, 204, 0));
         pInfo.setPreferredSize(new java.awt.Dimension(800, 450));
 
-        infoNombreCompleto.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoNombreCompleto.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 24)); // NOI18N
 
-        jLabel16.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel16.setText("Nombre Completo");
 
-        jLabel17.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel17.setText("Puesto");
 
-        infoPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoPuesto.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel18.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel18.setText("Dirección");
 
-        infoDireccion.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoDireccion.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel20.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel20.setText("Correo");
 
-        infoCorreo.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoCorreo.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel19.setText("Casa");
 
-        infoCasa.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoCasa.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel21.setText("Celular");
 
-        infoCelular.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoCelular.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel22.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel22.setText("Cédula");
 
-        infoCedula.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoCedula.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
 
-        jLabel24.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Leelawadee UI Semilight", 1, 14)); // NOI18N
         jLabel24.setText("Fecha de Nacimiento");
 
-        infoNacimiento.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 12)); // NOI18N
+        infoNacimiento.setFont(new java.awt.Font("Leelawadee UI Semilight", 0, 18)); // NOI18N
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout pInfoLayout = new javax.swing.GroupLayout(pInfo);
         pInfo.setLayout(pInfoLayout);
@@ -778,69 +834,98 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(pInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoNombreCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
                     .addGroup(pInfoLayout.createSequentialGroup()
                         .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(infoPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel16)
+                            .addGroup(pInfoLayout.createSequentialGroup()
                                 .addComponent(jLabel17)
-                                .addComponent(jLabel20)
-                                .addComponent(infoCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
-                            .addComponent(infoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19)
-                            .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel18))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(infoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pInfoLayout.createSequentialGroup()
-                                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addComponent(jLabel18)
-                                    .addComponent(infoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24)
-                                    .addComponent(infoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 418, Short.MAX_VALUE)))))
+                                .addComponent(infoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(infoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)))
+                    .addGroup(pInfoLayout.createSequentialGroup()
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(infoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(infoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(255, 255, 255)
+                                .addComponent(jLabel24))
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(71, 71, 71)
+                                .addComponent(infoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pInfoLayout.setVerticalGroup(
             pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pInfoLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(infoNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pInfoLayout.createSequentialGroup()
-                        .addComponent(infoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(infoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(infoDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(infoCelular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(infoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(infoNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17)
+                            .addComponent(infoPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(infoDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(8, 8, 8))))
+                    .addComponent(jLabel18))
+                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pInfoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel21))
+                    .addGroup(pInfoLayout.createSequentialGroup()
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pInfoLayout.createSequentialGroup()
+                                .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pInfoLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel19))
+                                    .addGroup(pInfoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(infoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(13, 13, 13))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pInfoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(pInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pInfoLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -849,17 +934,17 @@ public class Administrador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(btnInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUsuarios)
                 .addGap(18, 18, 18)
-                .addComponent(btnEditar)
+                .addComponent(btnAgregarPuesto)
                 .addGap(18, 18, 18)
                 .addComponent(btnVacaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCerrar)
                 .addContainerGap())
-            .addComponent(pEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(pPuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -884,14 +969,15 @@ public class Administrador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVacaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(pEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -905,8 +991,8 @@ public class Administrador extends javax.swing.JFrame {
                     .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(139, Short.MAX_VALUE)
-                    .addComponent(pInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(173, Short.MAX_VALUE)
+                    .addComponent(pInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -917,12 +1003,12 @@ public class Administrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        pEditar.setVisible(true);
+    private void btnAgregarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPuestoActionPerformed
+        pPuesto.setVisible(true);
         pUsuarios.setVisible(false);
         pVacaciones.setVisible(false);
         pInfo.setVisible(false);
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }//GEN-LAST:event_btnAgregarPuestoActionPerformed
     
     private void cargarSolicitudesVacaciones()
     {
@@ -947,7 +1033,8 @@ public class Administrador extends javax.swing.JFrame {
                 DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                 String fecha = df.format(rs.getDate("fecha"));
                 //Integer.toString(rs.getInt("idVacacion"))
-                String[] fila = {Integer.toString(rs.getInt("cedula")), nombre, fecha};
+                String[] fila = {Integer.toString(rs.getInt("idVacacion")), 
+                                 Integer.toString(rs.getInt("cedula")), nombre, "", fecha};
                 modeloVacaciones.addRow(fila);
             }
             con.close();
@@ -965,14 +1052,14 @@ public class Administrador extends javax.swing.JFrame {
     private void btnVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacacionesActionPerformed
         cargarSolicitudesVacaciones();
         pVacaciones.setVisible(true);
-        pEditar.setVisible(false);
+        pPuesto.setVisible(false);
         pUsuarios.setVisible(false);
         pInfo.setVisible(false);
     }//GEN-LAST:event_btnVacacionesActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         pUsuarios.setVisible(true);
-        pEditar.setVisible(false);
+        pPuesto.setVisible(false);
         pVacaciones.setVisible(false);
         pAgregar.setVisible(false);
         tpUsuario.setVisible(false);
@@ -985,6 +1072,7 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        DefaultTableModel modeloVacaciones = (DefaultTableModel) tFamiliares.getModel();
         if(!tfBuscar.getText().equals("")){
             String nombreUsuario = "%" + tfBuscar.getText() + "%";
             Boolean found = false;
@@ -1065,7 +1153,16 @@ public class Administrador extends javax.swing.JFrame {
                 lblNombre.setText(p.getPrimerNombre() + " " + p.getSegundoNombre() + " " + p.getPrimerApellido() + " " + p.getSegundoApellido());
                 lblPuesto.setText(p.getPuesto());
                 lbDireccion.setText(p.getDireccion());
-                //Agregar familia a la tabla
+                
+                for(int i=0; i<familia.size(); i++)
+                {
+                    String nombre = familia.get(i).getPrimerNombre() + " " + familia.get(i).getSegundoNombre() + " " + familia.get(i).getPrimerApellido() + " " + familia.get(i).getSegundoApellido();
+                    int cedula = familia.get(i).getCedula();
+                    //Integer.toString(rs.getInt("idVacacion"))
+                    String[] fila = {nombre, Integer.toString(cedula)};
+                    modeloVacaciones.addRow(fila);
+                }
+                
                 tpUsuario.setVisible(true);
             }else if(!found && !except)
             {
@@ -1177,17 +1274,16 @@ public class Administrador extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletarActionPerformed
-        //Retorna los id's de las solicitudes aprobadas
-        for(int i=0; i<tbVacaciones.getRowCount(); i++){
-            if(tbVacaciones.getValueAt(i, 3) != null){
-                System.out.println(tbVacaciones.getValueAt(i, 0));
-            }
-        }
-    }//GEN-LAST:event_btnCompletarActionPerformed
+    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        ///
+    }                                            
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
         pInfo.setVisible(true);
+        pUsuarios.setVisible(false);
+        pVacaciones.setVisible(false);
+        pPuesto.setVisible(false);
+        tpUsuario.setVisible(false);
         infoNombreCompleto.setText(usuario.getPrimerNombre()+" "+
                                    usuario.getSegundoNombre()+" "+
                                    usuario.getPrimerApellido()+" "+
@@ -1199,15 +1295,11 @@ public class Administrador extends javax.swing.JFrame {
         infoCasa.setText(""+usuario.getNumeroCasa());
         infoCelular.setText(""+usuario.getNumeroCelular());
         infoNacimiento.setText(usuario.getFechaNacimiento().toString());
-<<<<<<< HEAD
     }//GEN-LAST:event_btnInfoActionPerformed
-=======
-    }//GEN-LAST:event_lblUsuarioMouseClicked
 
-    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletarActionPerformed
-        //Retorna los id's de las solicitudes aprobadas
+    private void btnCompletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletaActionPerformed
         for(int i=0; i<tbVacaciones.getRowCount(); i++){
-            if(tbVacaciones.getValueAt(i, 3).equals(true)){
+            if(tbVacaciones.getValueAt(i, 4).equals(true)){
                 try {
                     Conexion db = new Conexion();
                     // Crear conexion
@@ -1232,18 +1324,38 @@ public class Administrador extends javax.swing.JFrame {
             }
         }
         cargarSolicitudesVacaciones();
-    }//GEN-LAST:event_btnCompletarActionPerformed
->>>>>>> eb169bff81a651069250e32f2f59669d348c8bc0
+    }//GEN-LAST:event_btnCompletaActionPerformed
+
+    private void btnPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuestoActionPerformed
+        try {
+            Conexion db = new Conexion();
+            // Crear conexion
+            Connection con = DriverManager.getConnection(db.getUrl(), db.getUsuario(), db.getContraseña());
+            // Crear declaracion (conseguir id del puesto)
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO puesto (nombrePuesto) VALUES (?)");
+            stmt.setString(1, tfPuesto.getText());
+            // Ejecutar SQL
+            int rsn = stmt.executeUpdate();
+            con.close();
+
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            System.out.println("No se logro conectar con el servidor, contacte al administrador");
+        }
+    }//GEN-LAST:event_btnPuestoActionPerformed
+                                     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarPuesto;
     private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCerrar;
-    private javax.swing.JButton btnCompletar;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnCompleta;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInfo;
+    private javax.swing.JButton btnPuesto;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnVacaciones;
     private javax.swing.JComboBox<String> cbPuestos;
@@ -1286,39 +1398,36 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbDireccion;
-    private javax.swing.JLabel lblCelular;
-    private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lbl;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPuesto;
     private javax.swing.JLabel lblSueldo;
-    private javax.swing.JLabel lblTelefono;
-    private javax.swing.JList lstFamiliares;
     private javax.swing.JList lstVacaciones;
     private javax.swing.JPanel pAgregar;
-    private javax.swing.JPanel pEditar;
     private javax.swing.JPanel pInfo;
+    private javax.swing.JPanel pPuesto;
     private javax.swing.JPanel pUsuarios;
     private javax.swing.JPanel pVacaciones;
-    private javax.swing.JTextArea taDireccion;
+    private javax.swing.JTable tFamiliares;
     private javax.swing.JTable tbVacaciones;
     private javax.swing.JTextField tfBuscar;
     private javax.swing.JTextField tfCasa;
     private javax.swing.JTextField tfCedula;
     private javax.swing.JTextField tfCel;
-    private javax.swing.JTextField tfCelular;
     private javax.swing.JTextField tfContrasena;
     private javax.swing.JTextField tfCuenta;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfPrimerApellido;
     private javax.swing.JTextField tfPrimerNombre;
+    private javax.swing.JTextField tfPuesto;
     private javax.swing.JTextField tfSegundoApellido;
     private javax.swing.JTextField tfSegundoNombre;
     private javax.swing.JTextField tfSueldo;
-    private javax.swing.JTextField tfTelefono;
     private javax.swing.JTextField tfUsuario;
     private javax.swing.JTabbedPane tpUsuario;
     // End of variables declaration//GEN-END:variables
